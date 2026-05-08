@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FISIOGASPAR — Clínica de Fisioterapia e Reabilitação em Lisboa</title>
+  <meta name="description" content="FISIOGASPAR — Clínica de Fisioterapia e Reabilitação em Lisboa. Fisioterapia, Reabilitação, Hidroterapia, Exercício Clínico e DESMOTEC. Av. EUA, Lisboa." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Base ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #08192d;
+      --navy-mid:   #0e2542;
+      --navy-light: #163356;
+      --blue:       #1565c0;
+      --blue-bright:#1e88e5;
+      --blue-glow:  rgba(21,101,192,0.35);
+      --red:        #c62828;
+      --red-bright: #e53935;
+      --white:      #f0f6ff;
+      --muted:      #7fa3c8;
+      --border:     rgba(255,255,255,0.08);
+      --font-display: 'Barlow Condensed', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 1rem;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── Scroll Reveal ───────────────────────────────── */
+    .js-reveal .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.65s cubic-bezier(0.4,0,0.2,1), transform 0.65s cubic-bezier(0.4,0,0.2,1);
+    }
+    .js-reveal .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── NAV ─────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(8,25,45,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled {
+      box-shadow: 0 4px 32px rgba(0,0,0,0.4);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .nav-logo span {
+      color: var(--blue-bright);
+    }
+    .nav-logo-accent {
+      width: 6px;
+      height: 6px;
+      background: var(--red-bright);
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.5); opacity: 0.7; }
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2.5rem;
+    }
+    .nav-links a {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0; right: 0;
+      height: 1px;
+      background: var(--blue-bright);
+      transform: scaleX(0);
+      transition: transform 0.25s cubic-bezier(0.4,0,0.2,1);
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .nav-cta {
+      background: var(--blue);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 0.625rem 1.5rem;
+      border-radius: 6px;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 2px 12px rgba(21,101,192,0.35);
+    }
+    .nav-cta:hover {
+      background: var(--blue-bright);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(30,136,229,0.45);
+    }
+    .nav-cta:active { transform: none; }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px; left: 0; right: 0; bottom: 0;
+      background: var(--navy);
+      z-index: 99;
+      padding: 2rem;
+      flex-direction: column;
+      gap: 1.75rem;
+      overflow-y: auto;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 1.5rem;
+      font-family: var(--font-display);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--white); }
+    .mobile-menu .mobile-cta {
+      background: var(--blue);
+      color: var(--white);
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      text-align: center;
+      margin-top: auto;
+    }
+
+    /* ── HERO ─────────────────────────────────────────── */
+    #inicio {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: 8rem 0 5rem;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      filter: brightness(0.28) saturate(0.8);
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(105deg, rgba(8,25,45,0.97) 0%, rgba(8,25,45,0.75) 55%, rgba(8,25,45,0.3) 100%),
+        radial-gradient(ellipse at 80% 60%, rgba(21,101,192,0.18) 0%, transparent 60%);
+    }
+    .hero-grain {
+      position: absolute;
+      inset: 0;
+      opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(21,101,192,0.15);
+      border: 1px solid rgba(21,101,192,0.3);
+      border-radius: 100px;
+      padding: 0.4rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue-bright);
+      margin-bottom: 1.75rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s cubic-bezier(0.4,0,0.2,1) 0.1s forwards;
+    }
+    .hero-badge-dot {
+      width: 6px; height: 6px;
+      background: var(--blue-bright);
+      border-radius: 50%;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3.2rem, 7vw, 6rem);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.65s cubic-bezier(0.4,0,0.2,1) 0.25s forwards;
+    }
+    .hero-title span {
+      color: var(--blue-bright);
+      display: block;
+    }
+
+    .hero-sub {
+      font-size: 1.125rem;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.65s cubic-bezier(0.4,0,0.2,1) 0.4s forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.65s cubic-bezier(0.4,0,0.2,1) 0.55s forwards;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.875rem 2rem;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(21,101,192,0.4);
+    }
+    .btn-primary:hover {
+      background: var(--blue-bright);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(30,136,229,0.5);
+    }
+    .btn-primary:active { transform: none; }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.875rem 2rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    }
+    .btn-secondary:hover {
+      border-color: rgba(255,255,255,0.5);
+      background: rgba(255,255,255,0.06);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.65s cubic-bezier(0.4,0,0.2,1) 0.7s forwards;
+    }
+    .hero-stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+    .hero-stat-num {
+      font-family: var(--font-display);
+      font-size: 2.25rem;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+    .hero-stat-label {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .hero-stat-sep {
+      width: 1px;
+      background: var(--border);
+      align-self: stretch;
+      margin: 0.25rem 0;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: none; }
+    }
+
+    /* ── MARQUEE ─────────────────────────────────────── */
+    .marquee-section {
+      background: var(--blue);
+      padding: 1rem 0;
+      overflow: hidden;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+    .marquee-track {
+      display: flex;
+      gap: 3rem;
+      animation: marqueeScroll 28s linear infinite;
+      white-space: nowrap;
+      width: max-content;
+    }
+    .marquee-section:hover .marquee-track {
+      animation-play-state: paused;
+    }
+    .marquee-item {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .marquee-dot {
+      width: 5px; height: 5px;
+      background: rgba(255,255,255,0.5);
+      border-radius: 50%;
+    }
+    @keyframes marqueeScroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ── SERVIÇOS ────────────────────────────────────── */
+    #servicos {
+      padding: 7rem 0;
+    }
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue-bright);
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.25rem, 4vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+    }
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+    .section-header {
+      margin-bottom: 3.5rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--navy-mid);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s cubic-bezier(0.4,0,0.2,1), box-shadow 0.3s, border-color 0.3s;
+      border-left: 3px solid transparent;
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.4), 0 0 0 1px rgba(30,136,229,0.2);
+      border-left-color: var(--blue-bright);
+    }
+    .service-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      filter: brightness(1.05) saturate(1.0) contrast(1.05);
+      transition: filter 0.3s, transform 0.4s;
+    }
+    .service-card:hover .service-img {
+      filter: brightness(1.15) saturate(1.1) contrast(1.05);
+      transform: scale(1.03);
+    }
+    .service-img-wrap {
+      overflow: hidden;
+      height: 220px;
+    }
+    .service-body {
+      padding: 1.5rem;
+    }
+    .service-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .service-name {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.5rem;
+      color: var(--white);
+    }
+    .service-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* ── SOBRE ───────────────────────────────────────── */
+    #sobre {
+      padding: 7rem 0;
+      background: var(--navy-mid);
+      position: relative;
+      overflow: hidden;
+    }
+    #sobre::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(21,101,192,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .sobre-img-wrap {
+      position: relative;
+    }
+    .sobre-img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      border-radius: 12px;
+      filter: brightness(1.05) saturate(1.0) contrast(1.05);
+    }
+    .sobre-badge {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      background: var(--blue);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      box-shadow: 0 8px 32px rgba(21,101,192,0.45);
+      text-align: center;
+    }
+    .sobre-badge-num {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1;
+    }
+    .sobre-badge-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .sobre-text { }
+    .sobre-features {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .sobre-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.25rem;
+      background: var(--navy);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .sobre-feature:hover {
+      border-color: rgba(30,136,229,0.3);
+      transform: translateX(4px);
+    }
+    .sobre-feature-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .sobre-feature-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+      color: var(--white);
+    }
+    .sobre-feature-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      font-weight: 300;
+      line-height: 1.55;
+    }
+
+    /* ── RATING ──────────────────────────────────────── */
+    .rating-strip {
+      padding: 5rem 0;
+      background: var(--navy);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .rating-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+    .rating-block {
+      text-align: center;
+    }
+    .rating-num {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--white);
+      letter-spacing: -0.03em;
+    }
+    .rating-num span { color: var(--blue-bright); }
+    .rating-stars {
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+      color: #fbbf24;
+      margin: 0.4rem 0;
+    }
+    .rating-label {
+      font-size: 0.85rem;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+    .rating-sep {
+      width: 1px;
+      height: 80px;
+      background: var(--border);
+    }
+    .rating-quote {
+      max-width: 380px;
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+    .rating-quote-author {
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      font-style: normal;
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    /* ── HORÁRIOS ────────────────────────────────────── */
+    #horarios {
+      padding: 7rem 0;
+      background: var(--navy-mid);
+    }
+    .horarios-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .schedule-table {
+      background: var(--navy);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .schedule-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+    .schedule-row:last-child { border-bottom: none; }
+    .schedule-row:hover { background: rgba(255,255,255,0.03); }
+    .schedule-day {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--muted);
+    }
+    .schedule-hours {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--white);
+    }
+    .schedule-hours.closed {
+      color: var(--muted);
+      font-weight: 400;
+    }
+    .schedule-today {
+      background: rgba(21,101,192,0.1);
+    }
+    .schedule-today .schedule-day {
+      color: var(--blue-bright);
+      font-weight: 600;
+    }
+
+    .localizacao-card {
+      background: var(--navy);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .loc-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .loc-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .loc-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.25rem;
+      font-weight: 500;
+    }
+    .loc-value {
+      font-size: 0.95rem;
+      color: var(--white);
+      font-weight: 400;
+    }
+    .loc-value a {
+      color: var(--blue-bright);
+      transition: color 0.2s;
+    }
+    .loc-value a:hover { color: var(--white); }
+
+    .map-embed {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .map-embed iframe {
+      width: 100%;
+      height: 200px;
+      display: block;
+      filter: grayscale(30%) brightness(0.8);
+    }
+
+    /* ── CONTACTO ────────────────────────────────────── */
+    #contacto {
+      padding: 7rem 0;
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+    #contacto::before {
+      content: '';
+      position: absolute;
+      bottom: -200px; left: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(21,101,192,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .contact-info-blocks {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .contact-info-block {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .contact-icon {
+      width: 44px; height: 44px;
+      background: rgba(21,101,192,0.15);
+      border: 1px solid rgba(21,101,192,0.25);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .contact-info-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+      font-weight: 500;
+    }
+    .contact-info-value {
+      font-size: 1rem;
+      color: var(--white);
+      font-weight: 500;
+    }
+    .contact-info-value a {
+      color: var(--white);
+      transition: color 0.2s;
+    }
+    .contact-info-value a:hover { color: var(--blue-bright); }
+
+    .contact-form-card {
+      background: var(--navy-mid);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 8px 48px rgba(0,0,0,0.3);
+    }
+    .form-title {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--white);
+    }
+    .form-subtitle {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .form-group label {
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: var(--navy);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--blue-bright);
+      box-shadow: 0 0 0 3px rgba(30,136,229,0.15);
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(127,163,200,0.4); }
+    .form-group select option { background: var(--navy-mid); color: var(--white); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    .form-consent {
+      margin-top: 1.25rem;
+    }
+    .consent-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.625rem;
+      font-size: 0.875rem;
+      color: var(--muted);
+      cursor: pointer;
+    }
+    .consent-label input[type="checkbox"] {
+      margin-top: 0.2rem;
+      flex-shrink: 0;
+      accent-color: var(--blue-bright);
+      cursor: pointer;
+    }
+    .consent-label a {
+      color: var(--blue-bright);
+      text-decoration: underline;
+      transition: color 0.2s;
+    }
+    .consent-label a:hover { color: var(--white); }
+
+    .form-submit {
+      width: 100%;
+      background: var(--blue);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 1rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      margin-top: 1.5rem;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(21,101,192,0.35);
+      letter-spacing: 0.02em;
+    }
+    .form-submit:hover {
+      background: var(--blue-bright);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(30,136,229,0.45);
+    }
+    .form-submit:active { transform: none; }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    footer {
+      background: #050f1d;
+      padding: 3rem 0 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .footer-logo {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: var(--white);
+    }
+    .footer-logo span { color: var(--blue-bright); }
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      font-size: 0.875rem;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-copy {
+      width: 100%;
+      padding-top: 2rem;
+      margin-top: 1rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.8rem;
+      color: rgba(127,163,200,0.5);
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .sobre-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .sobre-img { height: 360px; }
+      .sobre-badge { bottom: 1rem; right: 1rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+
+      #inicio { padding: 7rem 0 4rem; }
+      .hero-bg img { opacity: 1; filter: brightness(0.22) saturate(0.8); }
+
+      @media (max-width: 900px) {
+        .hero-bg img { width: 100%; opacity: 0.35; }
+        .hero-overlay { background: linear-gradient(to bottom, rgba(8,25,45,0.7) 0%, rgba(8,25,45,0.92) 70%, var(--navy) 100%); }
+      }
+
+      .hero-stats { gap: 1.25rem; flex-wrap: wrap; justify-content: space-between; }
+      .hero-stat-sep { display: none; }
+
+      .services-grid { grid-template-columns: 1fr; }
+      .horarios-grid { grid-template-columns: 1fr; }
+      .sobre-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .rating-inner { gap: 2rem; }
+      .rating-sep { display: none; }
+      .rating-quote { max-width: 100%; }
+
+      section { padding: 4.5rem 0 !important; }
+      #inicio { padding: 7rem 0 4rem !important; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 1.25rem; }
+      .hero-title { font-size: 3rem; }
+      .hero-actions { flex-direction: column; }
+      .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+      .section-title { font-size: 2.25rem; }
+      .contact-form-card { padding: 1.75rem 1.25rem; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-copy { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="mainNav">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#inicio" class="nav-logo">
+          FISIO<span>GASPAR</span>
+          <span class="nav-logo-accent"></span>
+        </a>
+        <ul class="nav-links">
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#sobre">Sobre Nós</a></li>
+          <li><a href="#horarios">Horários</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <a href="#contacto" class="nav-cta nav-cta-desktop">Marcar Consulta</a>
+        <button class="nav-hamburger" id="hamburger" aria-label="Abrir menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#servicos">Serviços</a>
+    <a href="#sobre">Sobre Nós</a>
+    <a href="#horarios">Horários</a>
+    <a href="#contacto">Contacto</a>
+    <a href="#contacto" class="mobile-cta">Marcar Consulta</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="inicio">
+    <div class="hero-bg">
+      <img src="brand_assets/foto1.jpg" alt="Equipa FISIOGASPAR com paciente" />
+      <div class="hero-overlay"></div>
+      <div class="hero-grain"></div>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Clínica de Fisioterapia · Lisboa
+        </div>
+        <h1 class="hero-title">
+          A Sua Recuperação.<br>
+          <span>A Sério.</span>
+        </h1>
+        <p class="hero-sub">
+          Equipa especializada em fisioterapia, reabilitação e exercício clínico.
+          Tratamentos personalizados para recuperar mais rápido e voltar ao que importa.
+        </p>
+        <div class="hero-actions">
+          <a href="#contacto" class="btn-primary">
+            Marcar Consulta →
+          </a>
+          <a href="tel:217279000" class="btn-secondary">
+            ☎ 217 279 000
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat-item">
+            <span class="hero-stat-num" data-count="46" data-decimal="true">0</span>
+            <span class="hero-stat-label">★ Google Reviews</span>
+          </div>
+          <div class="hero-stat-sep"></div>
+          <div class="hero-stat-item">
+            <span class="hero-stat-num" data-count="150">0</span>
+            <span class="hero-stat-label">Avaliações</span>
+          </div>
+          <div class="hero-stat-sep"></div>
+          <div class="hero-stat-item">
+            <span class="hero-stat-num">6</span>
+            <span class="hero-stat-label">Especialidades</span>
+          </div>
+          <div class="hero-stat-sep"></div>
+          <div class="hero-stat-item">
+            <span class="hero-stat-num">7:00</span>
+            <span class="hero-stat-label">Abertura</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <span class="marquee-item">Fisioterapia <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Reabilitação <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Hidroterapia <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Exercício Clínico <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Eletroterapia <span class="marquee-dot"></span></span>
+      <span class="marquee-item">DESMOTEC <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Fisioterapia <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Reabilitação <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Hidroterapia <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Exercício Clínico <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Eletroterapia <span class="marquee-dot"></span></span>
+      <span class="marquee-item">DESMOTEC <span class="marquee-dot"></span></span>
+    </div>
+  </div>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">O Que Fazemos</p>
+        <h2 class="section-title">Tratamentos Especializados</h2>
+        <p class="section-desc">
+          Da lesão ao alto rendimento, cada caso é tratado com rigor técnico e equipamento de ponta.
+        </p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-img-wrap">
+            <img class="service-img" src="brand_assets/foto5.jpg" alt="Fisioterapia" />
+          </div>
+          <div class="service-body">
+            <div class="service-icon">🩺</div>
+            <div class="service-name">Fisioterapia</div>
+            <p class="service-desc">Avaliação e tratamento de lesões musculoesqueléticas. Técnicas manuais, mobilização e terapia personalizada para o seu caso.</p>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-img-wrap">
+            <img class="service-img" src="brand_assets/foto2.jpg" alt="Exercício Clínico" />
+          </div>
+          <div class="service-body">
+            <div class="service-icon">🏋️</div>
+            <div class="service-name">Exercício Clínico</div>
+            <p class="service-desc">Ginásio equipado com máquinas Technogym para reabilitação progressiva e fortalecimento muscular supervisionado.</p>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-img-wrap">
+            <img class="service-img" src="brand_assets/foto4.jpg" alt="Hidroterapia" />
+          </div>
+          <div class="service-body">
+            <div class="service-icon">🌊</div>
+            <div class="service-name">Hidroterapia</div>
+            <p class="service-desc">Piscina terapêutica aquecida para reabilitação em meio aquático. Ideal para casos em que o exercício em terra é limitado.</p>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-img-wrap">
+            <img class="service-img" src="brand_assets/foto6.jpg" alt="DESMOTEC" />
+          </div>
+          <div class="service-body">
+            <div class="service-icon">⚡</div>
+            <div class="service-name">DESMOTEC</div>
+            <p class="service-desc">Programa exclusivo de treino funcional e reabilitação com tecnologia DESMOTEC by FISIOGASPAR. Alta performance, resultados comprovados.</p>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-img-wrap">
+            <img class="service-img" src="brand_assets/foto5.jpg" alt="Eletroterapia" style="object-position: right;" />
+          </div>
+          <div class="service-body">
+            <div class="service-icon">🔬</div>
+            <div class="service-name">Eletroterapia</div>
+            <p class="service-desc">Tratamentos com equipamento médico de ponta: ultrassons, TENS, correntes interferênciais e laser terapêutico.</p>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-img-wrap">
+            <img class="service-img" src="brand_assets/foto3.jpg" alt="Formação e Educação" />
+          </div>
+          <div class="service-body">
+            <div class="service-icon">📚</div>
+            <div class="service-name">Educação para a Saúde</div>
+            <p class="service-desc">Sessões de formação e educação para pacientes e profissionais. Conhecimento que acelera a recuperação e previne recidivas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <div class="container">
+      <div class="sobre-grid">
+        <div class="sobre-img-wrap reveal">
+          <img class="sobre-img" src="brand_assets/foto1.jpg" alt="Equipa FISIOGASPAR" />
+          <div class="sobre-badge">
+            <div class="sobre-badge-num">4.6★</div>
+            <div class="sobre-badge-label">150 Reviews</div>
+          </div>
+        </div>
+        <div class="sobre-text reveal">
+          <p class="section-label">Sobre Nós</p>
+          <h2 class="section-title">Uma Clínica de Confiança</h2>
+          <p class="section-desc">
+            A FISIOGASPAR é uma clínica de referência em Lisboa, especializada em fisioterapia e reabilitação.
+            Com uma equipa de fisioterapeutas experientes e equipamento de última geração, ajudamos os nossos pacientes
+            a recuperar de forma segura, eficaz e rápida.
+          </p>
+          <div class="sobre-features">
+            <div class="sobre-feature">
+              <span class="sobre-feature-icon">🏆</span>
+              <div>
+                <div class="sobre-feature-title">Equipa Especializada</div>
+                <p class="sobre-feature-desc">Fisioterapeutas com formação especializada e vasta experiência clínica em reabilitação e desporto.</p>
+              </div>
+            </div>
+            <div class="sobre-feature">
+              <span class="sobre-feature-icon">🔧</span>
+              <div>
+                <div class="sobre-feature-title">Equipamento de Ponta</div>
+                <p class="sobre-feature-desc">Tecnologia Technogym, DESMOTEC e equipamento médico de última geração para os melhores resultados.</p>
+              </div>
+            </div>
+            <div class="sobre-feature">
+              <span class="sobre-feature-icon">📍</span>
+              <div>
+                <div class="sobre-feature-title">Localização Central</div>
+                <p class="sobre-feature-desc">Na Avenida dos Estados Unidos da América, no coração de Lisboa. Fácil acesso por transportes públicos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RATING -->
+  <div class="rating-strip">
+    <div class="container">
+      <div class="rating-inner">
+        <div class="rating-block reveal">
+          <div class="rating-num"><span data-count="46" data-decimal="true">0</span></div>
+          <div class="rating-stars">★★★★★</div>
+          <div class="rating-label">Classificação Google</div>
+        </div>
+        <div class="rating-sep reveal"></div>
+        <div class="rating-block reveal">
+          <div class="rating-num"><span data-count="150">0</span>+</div>
+          <div class="rating-label" style="margin-top:0.75rem;">Avaliações verificadas</div>
+        </div>
+        <div class="rating-sep reveal"></div>
+        <div class="rating-quote reveal">
+          <p>"Excelente clínica, equipa muito competente e atenciosa. Recuperei muito mais rápido do que esperava. Recomendo a toda a gente!"</p>
+          <div class="rating-quote-author">— Avaliação Google</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HORÁRIOS + LOCALIZAÇÃO -->
+  <section id="horarios">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">Quando Estamos Cá</p>
+        <h2 class="section-title">Horários & Localização</h2>
+      </div>
+      <div class="horarios-grid">
+        <div class="schedule-table reveal">
+          <div class="schedule-row">
+            <span class="schedule-day">Segunda-feira</span>
+            <span class="schedule-hours">07:00 – 21:30</span>
+          </div>
+          <div class="schedule-row">
+            <span class="schedule-day">Terça-feira</span>
+            <span class="schedule-hours">07:00 – 21:30</span>
+          </div>
+          <div class="schedule-row">
+            <span class="schedule-day">Quarta-feira</span>
+            <span class="schedule-hours">07:00 – 21:30</span>
+          </div>
+          <div class="schedule-row">
+            <span class="schedule-day">Quinta-feira</span>
+            <span class="schedule-hours">07:00 – 21:30</span>
+          </div>
+          <div class="schedule-row">
+            <span class="schedule-day">Sexta-feira</span>
+            <span class="schedule-hours">07:00 – 21:30</span>
+          </div>
+          <div class="schedule-row">
+            <span class="schedule-day">Sábado</span>
+            <span class="schedule-hours">09:00 – 13:00</span>
+          </div>
+          <div class="schedule-row">
+            <span class="schedule-day">Domingo</span>
+            <span class="schedule-hours closed">Fechado</span>
+          </div>
+        </div>
+        <div class="localizacao-card reveal">
+          <div class="loc-item">
+            <span class="loc-icon">📍</span>
+            <div>
+              <div class="loc-label">Morada</div>
+              <div class="loc-value">Av. dos Estados Unidos da América 2 C<br>1700-174 Lisboa</div>
+            </div>
+          </div>
+          <div class="loc-item">
+            <span class="loc-icon">📞</span>
+            <div>
+              <div class="loc-label">Telefone</div>
+              <div class="loc-value"><a href="tel:217279000">217 279 000</a></div>
+            </div>
+          </div>
+          <div class="loc-item">
+            <span class="loc-icon">✉️</span>
+            <div>
+              <div class="loc-label">Email</div>
+              <div class="loc-value"><a href="mailto:geral@fisiogaspar.pt">geral@fisiogaspar.pt</a></div>
+            </div>
+          </div>
+          <div class="map-embed">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3111.9!2d-9.1326!3d38.7412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd19334c3b8b7bc7%3A0x0!2sAv.+dos+Estados+Unidos+da+Am%C3%A9rica+2+C%2C+Lisboa!5e0!3m2!1spt!2spt!4v1"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Localização FISIOGASPAR">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto">
+    <div class="container">
+      <div class="contact-grid">
+        <div>
+          <div class="reveal">
+            <p class="section-label">Entre em Contacto</p>
+            <h2 class="section-title">Marque a Sua Consulta</h2>
+            <p class="section-desc">
+              Responderemos em menos de 24 horas. Em caso urgente, ligue diretamente.
+            </p>
+          </div>
+          <div class="contact-info-blocks">
+            <div class="contact-info-block reveal">
+              <div class="contact-icon">📞</div>
+              <div>
+                <div class="contact-info-label">Telefone</div>
+                <div class="contact-info-value"><a href="tel:217279000">217 279 000</a></div>
+              </div>
+            </div>
+            <div class="contact-info-block reveal">
+              <div class="contact-icon">✉️</div>
+              <div>
+                <div class="contact-info-label">Email</div>
+                <div class="contact-info-value"><a href="mailto:geral@fisiogaspar.pt">geral@fisiogaspar.pt</a></div>
+              </div>
+            </div>
+            <div class="contact-info-block reveal">
+              <div class="contact-icon">🕐</div>
+              <div>
+                <div class="contact-info-label">Horário</div>
+                <div class="contact-info-value">Seg–Sex 7:00–21:30 · Sáb 9:00–13:00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form-card reveal">
+          <div class="form-title">Pedido de Marcação</div>
+          <p class="form-subtitle">Preencha os dados e entraremos em contacto.</p>
+          <form id="contactForm" action="https://formsubmit.co/geral@fisiogaspar.pt" method="POST">
+            <input type="hidden" name="_subject" value="Nova marcação — FISIOGASPAR" />
+            <input type="hidden" name="_next" value="#contacto" />
+            <input type="hidden" name="_captcha" value="false" />
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" placeholder="O seu nome" required />
+              </div>
+              <div class="form-group">
+                <label for="telefone">Telefone</label>
+                <input type="tel" id="telefone" name="telefone" placeholder="9XX XXX XXX" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="email@exemplo.com" required />
+            </div>
+            <div class="form-group">
+              <label for="servico">Serviço de interesse</label>
+              <select id="servico" name="servico">
+                <option value="">Selecionar serviço</option>
+                <option value="fisioterapia">Fisioterapia</option>
+                <option value="reabilitacao">Reabilitação</option>
+                <option value="hidroterapia">Hidroterapia</option>
+                <option value="exercicio-clinico">Exercício Clínico</option>
+                <option value="eletroterapia">Eletroterapia</option>
+                <option value="desmotec">DESMOTEC</option>
+                <option value="outro">Outro / Não sei</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="mensagem">Mensagem (opcional)</label>
+              <textarea id="mensagem" name="mensagem" placeholder="Descreva brevemente o seu caso..."></textarea>
+            </div>
+            <div class="form-consent">
+              <label class="consent-label">
+                <input type="checkbox" id="consent" name="consent" required />
+                <span>Li e aceito a <a href="politica-privacidade.html" target="_blank">Política de Privacidade</a></span>
+              </label>
+            </div>
+            <button type="submit" class="form-submit">Enviar Pedido →</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">FISIO<span>GASPAR</span></div>
+        <div class="footer-links">
+          <a href="#servicos">Serviços</a>
+          <a href="#sobre">Sobre Nós</a>
+          <a href="#horarios">Horários</a>
+          <a href="#contacto">Contacto</a>
+          <a href="politica-privacidade.html">Política de Privacidade</a>
+        </div>
+      </div>
+      <div class="footer-copy">
+        <span>© 2026 FISIOGASPAR — Todos os direitos reservados</span>
+        <span>Av. dos Estados Unidos da América 2 C · 1700-174 Lisboa</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // Hamburger
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+        mobileMenu.classList.remove('open');
+      }
+    });
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+
+    // Enable scroll reveal (gate on JS so screenshots show content)
+    document.body.classList.add('js-reveal');
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Animated counters
+    function animateCounter(el) {
+      const target = parseInt(el.dataset.count);
+      const isDecimal = el.dataset.decimal === 'true';
+      const duration = 1600;
+      const start = performance.now();
+      const update = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - progress, 3);
+        const val = isDecimal ? (ease * target / 10).toFixed(1) : Math.round(ease * target);
+        el.textContent = val;
+        if (progress < 1) requestAnimationFrame(update);
+      };
+      requestAnimationFrame(update);
+    }
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          counterObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+
+    // Highlight today in schedule
+    const days = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+    const todayName = days[new Date().getDay()];
+    document.querySelectorAll('.schedule-day').forEach(el => {
+      if (el.textContent.trim() === todayName) {
+        el.closest('.schedule-row').classList.add('schedule-today');
+      }
+    });
+  </script>
+</body>
+</html>
