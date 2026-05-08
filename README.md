@@ -1,7 +1,8 @@
 # FISIOGASPAR — Website
 
-**Estado:** Em construção  
+**Estado:** Entregue ✅  
 **Data de criação:** 2026-05-08  
+**Data de entrega:** 2026-05-07  
 **Prospect origem:** `projects/client-acquisition/prospects/fisiogaspar/`
 
 ## Sobre o cliente
@@ -29,8 +30,8 @@ npx playwright test --config playwright.config.js
 ```
 
 ## Deploy
-- URL Vercel: (a preencher)
-- Repo GitHub: (a preencher)
+- URL Vercel: https://fisiogaspar.vercel.app
+- Repo GitHub: https://github.com/Hitshigo/fisiogaspar
 
 ## Notas
 - Email `geral@fisiogaspar.pt` é inferido — confirmar com cliente
